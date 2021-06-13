@@ -1,0 +1,5 @@
+rootProject.name = "HiltMultiModule"
+include ':app'
+include ':feature:one'
+include ':feature:two'
+include ':common'
