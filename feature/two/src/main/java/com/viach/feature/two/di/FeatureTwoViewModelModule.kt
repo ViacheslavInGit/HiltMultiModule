@@ -7,7 +7,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.components.FragmentComponent
+import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoMap
 
 /**
@@ -15,13 +15,14 @@ import dagger.multibindings.IntoMap
  */
 @Module
 @InstallIn(
+//    SingletonComponent::class,
     ActivityComponent::class,
-    FragmentComponent::class,
+//    FragmentComponent::class,
 )
 interface FeatureTwoViewModelModule {
 
     @Binds
     @IntoMap
     @ViewModelKey(TwoViewModel::class)
-    fun bindsMainViewModel(viewModel: TwoViewModel): ViewModel
+    fun bindsTwoViewModel(viewModel: TwoViewModel): ViewModel
 }

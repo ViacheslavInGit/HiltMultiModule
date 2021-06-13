@@ -8,7 +8,7 @@ import javax.inject.Inject
 /**
  * @author ext.vbeliy
  */
-@HiltViewModel
+//@HiltViewModel
 class OneViewModel @Inject constructor(
     private val featureTwoNavigator: Navigator.FeatureTwoNavigator,
 ) : CoreViewModel() {

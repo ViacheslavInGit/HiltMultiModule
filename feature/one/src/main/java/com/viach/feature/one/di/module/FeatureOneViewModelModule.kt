@@ -19,9 +19,9 @@ import dagger.multibindings.IntoMap
 @Module
 @InstallIn(
 //    SingletonComponent::class,
-//    ActivityComponent::class,
-    FragmentComponent::class,
-    ViewModelComponent::class,
+    ActivityComponent::class,
+//    FragmentComponent::class,
+//    ViewModelComponent::class,
 )
 interface FeatureOneViewModelModule {
 

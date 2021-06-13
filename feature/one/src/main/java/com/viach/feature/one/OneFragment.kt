@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.viach.common.CoreFragment
 import com.viach.feature.one.databinding.FragmentOneBinding
 import com.viach.feature.one.di.DaggerFeatureOneComponent
@@ -18,7 +19,8 @@ import dagger.hilt.android.EntryPointAccessors
 @AndroidEntryPoint
 class OneFragment : CoreFragment<OneViewModel, FragmentOneBinding>() {
 
-    override val viewModel: OneViewModel by activityViewModels()
+//    override val viewModel: OneViewModel by activityViewModels()
+    override val viewModel: OneViewModel by viewModels { viewModelFactory }
 
     override fun inflate(inflater: LayoutInflater) = FragmentOneBinding.inflate(inflater)
 
@@ -26,8 +28,8 @@ class OneFragment : CoreFragment<OneViewModel, FragmentOneBinding>() {
         DaggerFeatureOneComponent
             .builder()
             .fragmentDependencies(
-                EntryPointAccessors.fromFragment(
-                    this,
+                EntryPointAccessors.fromActivity(
+                    requireActivity(),
                     FeatureOneFragmentDependencies::class.java,
                 )
             )

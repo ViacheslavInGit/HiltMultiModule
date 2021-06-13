@@ -14,9 +14,9 @@ import dagger.hilt.components.SingletonComponent
  */
 @Module
 @InstallIn(
-    SingletonComponent::class,
+//    SingletonComponent::class,
     ActivityComponent::class,
-    FragmentComponent::class,
+//    FragmentComponent::class,
 )
 interface CoreViewModelModule {
 
