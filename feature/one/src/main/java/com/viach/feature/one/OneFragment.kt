@@ -3,12 +3,11 @@ package com.viach.feature.one
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.viach.common.CoreFragment
 import com.viach.feature.one.databinding.FragmentOneBinding
 import com.viach.feature.one.di.DaggerFeatureOneComponent
-import com.viach.feature.one.di.dependencies.FeatureOneFragmentDependencies
+import com.viach.feature.one.di.dependencies.FeatureOneActivityDependencies
 //import com.viach.feature.one.di.dependencies.FeatureOneViewModelDependencies
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
@@ -16,10 +15,14 @@ import dagger.hilt.android.EntryPointAccessors
 /**
  * @author ext.vbeliy
  */
-@AndroidEntryPoint
+// not need here cause i inject from own component
+//@AndroidEntryPoint
 class OneFragment : CoreFragment<OneViewModel, FragmentOneBinding>() {
 
-//    override val viewModel: OneViewModel by activityViewModels()
+    //inject from factory, so cant use this
+    //override val viewModel: OneViewModel by activityViewModels()
+
+    //use own factory
     override val viewModel: OneViewModel by viewModels { viewModelFactory }
 
     override fun inflate(inflater: LayoutInflater) = FragmentOneBinding.inflate(inflater)
@@ -27,18 +30,12 @@ class OneFragment : CoreFragment<OneViewModel, FragmentOneBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerFeatureOneComponent
             .builder()
-            .fragmentDependencies(
+            .activityDependencies(
                 EntryPointAccessors.fromActivity(
                     requireActivity(),
-                    FeatureOneFragmentDependencies::class.java,
+                    FeatureOneActivityDependencies::class.java,
                 )
             )
-//            .viewModelDependencies(
-//                EntryPointAccessors.fromView(
-//                    view,
-//                    FeatureOneViewModelDependencies::class.java,
-//                )
-//            )
             .build()
             .inject(this)
 

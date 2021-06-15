@@ -1,7 +1,7 @@
 package com.viach.feature.one.di
 
 import com.viach.feature.one.OneFragment
-import com.viach.feature.one.di.dependencies.FeatureOneFragmentDependencies
+import com.viach.feature.one.di.dependencies.FeatureOneActivityDependencies
 //import com.viach.feature.one.di.dependencies.FeatureOneViewModelDependencies
 import dagger.Component
 
@@ -10,8 +10,7 @@ import dagger.Component
  */
 @Component(
     dependencies = [
-        FeatureOneFragmentDependencies::class,
-//        FeatureOneViewModelDependencies::class,
+        FeatureOneActivityDependencies::class,
     ]
 )
 interface FeatureOneComponent {
@@ -20,8 +19,7 @@ interface FeatureOneComponent {
 
     @Component.Builder
     interface Builder {
-//        fun viewModelDependencies(viewModelDependencies: FeatureOneViewModelDependencies): Builder
-        fun fragmentDependencies(fragmentDependencies: FeatureOneFragmentDependencies): Builder
+        fun activityDependencies(activityDependencies: FeatureOneActivityDependencies): Builder
         fun build(): FeatureOneComponent
     }
 }

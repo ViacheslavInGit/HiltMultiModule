@@ -14,7 +14,6 @@ import dagger.hilt.components.SingletonComponent
  */
 @Module
 @InstallIn(
-//    SingletonComponent::class,
     ActivityComponent::class,
 )
 interface FeatureTwoNavigationModule {
