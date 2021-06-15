@@ -26,6 +26,6 @@ class MainActivity : CoreActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        router.navigateTo(FeatureOneScreens.oneScreen())
+        router.newRootScreen(FeatureOneScreens.oneScreen())
     }
 }
